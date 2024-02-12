@@ -34,7 +34,7 @@ public class PlayerControler : MonoBehaviour
         movement *= flySpeed;
         //dodaj ruch do obiektu
         transform.position += movement;
-
+        //aaa
 
         //obrót
         //modyfikuj oœ "Y" obiektu player
