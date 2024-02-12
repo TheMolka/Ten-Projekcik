@@ -15,6 +15,7 @@ public class PlayerControler : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //dodaj do wspó³rzêdnych wartoœæ x=1, y=0, z=0 pomno¿one przez czas
         //mierzony w sekundach od ostatniej klatki
         //transform.position += new Vector3(1, 0, 0) * Time.deltaTime;
@@ -47,6 +48,8 @@ public class PlayerControler : MonoBehaviour
         //dodaj obrót do obiektu
         //nie mo¿emy u¿yæ += poniewa¿ unity u¿ywa Quaternionów do zapisu rotacji
         transform.Rotate(rotation);
+
+
 
 
     }
