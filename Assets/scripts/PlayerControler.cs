@@ -28,5 +28,8 @@ public class PlayerControler : MonoBehaviour
         movment *= Input.GetAxis("Vertical");
         //dodaj ruch obiektu
         transform.position += movment;
+
+        //obrót
+
     }
 }
