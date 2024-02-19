@@ -5,6 +5,7 @@ using UnityEngine;
 public class cameracontroler : MonoBehaviour
 {
     Transform player;
+    public float cameraHeight = 10.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -18,7 +19,7 @@ public class cameracontroler : MonoBehaviour
     void Update()
     {
         //oblicz docelow¹ pozycje gracza
-        Vector3 targetPosition = player.position + Vector3.up * 10;
+        Vector3 targetPosition = player.position + Vector3.up * cameraHeight;
         //p³ynne przesuniencie kamery w kierunku gracza
         //funkcja Vector3.lerp
         //p³ynnie przechodzi z pozycji pierwszego argumentu do drugiego w czasie trzeciego 
