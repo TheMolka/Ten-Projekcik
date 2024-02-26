@@ -7,6 +7,7 @@ public class asteroidgenerator : MonoBehaviour
     //model zawieraj¹cy 3 kostki
     GameObject model;
     //wylosowana rotacja/s
+    Vector3 rotation = Vector3.one;
     // Start is called before the first frame update
 
     void Start()
@@ -28,11 +29,19 @@ public class asteroidgenerator : MonoBehaviour
 
 
         }
+        
+        //wylosuj jednorazowo rotacje/s naszej asteroidy
+        rotation.x = Random.value;
+        rotation.y = Random.value;
+        rotation.z = Random.value;
+        rotation *= Random.Range(10, 20);
     }
+
 
     // Update is called once per frame
     void Update()
     {
-        
+        // obróæ model 
+        model.transform.Rotate(rotation * Time.deltaTime);
     }
 }
