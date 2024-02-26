@@ -367,7 +367,7 @@ GameObject:
   - component: {fileID: 8798165080223288512}
   - component: {fileID: 7543131337575641332}
   m_Layer: 0
-  m_Name: static asteroid
+  m_Name: staticasteroid
   m_TagString: asteroid
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
