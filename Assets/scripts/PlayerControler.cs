@@ -1,5 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerControler : MonoBehaviour
@@ -51,8 +53,14 @@ public class PlayerControler : MonoBehaviour
         transform.Rotate(rotation);
 
 
-
-
-
+        private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.collider.transform.CompareTag("asteroid") 
+                { 
+                
+                }
     }
+
+
+}
 }
