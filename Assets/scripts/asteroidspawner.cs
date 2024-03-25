@@ -56,7 +56,7 @@ public class AsteroidSpawner : MonoBehaviour
 
         //sprawdz czy miejsce jest wolne
         //! oznacza "nie" czyli nie ma nic w promieniu 5 jednostek od miejsca randomPosition
-        if (!Physics.CheckSphere(randomPosition, 2))
+        if (!Physics.CheckSphere(randomPosition, 5))
         {
             //stworz zmienn¹ asteroid, zespawnuj nowy asteroid korzystaj¹c z prefaba
             // w losowym miejscu, z rotacj¹ domyœln¹ (Quaternion.identity)
