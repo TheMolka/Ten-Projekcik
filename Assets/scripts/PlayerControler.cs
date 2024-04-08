@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -10,6 +11,9 @@ public class PlayerControler : MonoBehaviour
     public float flySpeed = 5f;
 
     GameObject levelManagerObject;
+    //stan osłon w procentach (1=100%)
+    float shieldCapacity = 1;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -57,7 +61,7 @@ public class PlayerControler : MonoBehaviour
         //dodaj obrót do obiektu
         //nie możemy użyć += ponieważ unity używa Quaternionów do zapisu rotacji
         transform.Rotate(rotation);
-
+        UpdateUI();
     }
 
     private void UpdateUI() {
@@ -68,7 +72,11 @@ public class PlayerControler : MonoBehaviour
         Vector3 target = levelManagerObject.GetComponent<LevelManager>().exitPosition;
         //obroc znacznik w strone wyjscia
         transform.Find("NavUI").Find("TargetMarker").LookAt(target);
-
+        //zmien ilosc procentwo widoczna w interfejsie
+        //TODO: poprawić wyświetlanie stanu osłon!
+        TextMeshPro shieldText =
+            GameObject.Find("Canvas").transform.Find("ShieldCapacityText").GetComponent<TextMeshPro>();
+        shieldText.text = " Shield: " + shieldCapacity.ToString() + "%";
 
     }
 
@@ -79,9 +87,13 @@ public class PlayerControler : MonoBehaviour
         //sprawdz czy dotknęliśmy asteroidy
         if (collision.collider.transform.CompareTag("asteroid"))
         {
-            Debug.Log("Boom!");
-            //pauza
-            Time.timeScale = 0;
+            //transform asteroidy
+            Transform asteroid = collision.collider.transform;
+            //policz wektor według którego odepchniemy asteroide
+            Vector3 shieldForce = asteroid.position - transform.position;
+            //popchnij asteroide
+            asteroid.GetComponent<Rigidbody>().AddForce(shieldForce * 5, ForceMode.Impulse);
+            shieldCapacity -= 0.25f;
         }
     }
 }
