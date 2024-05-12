@@ -78,6 +78,19 @@ public class PlayerControler : MonoBehaviour
             GameObject.Find("Canvas").transform.Find("ShieldCapacityText").GetComponent<TextMeshProUGUI>();
         shieldText.text = " Osłony: " + (shieldCapacity*100).ToString() + "%";
 
+        //sprawdzamy czy poziom się zakończył i czy musimy wyświetlić ekran końcowy
+        if (levelManagerObject.GetComponent<LevelManager>().levelComplete)
+        {
+            //znajdz canvas (interfejs), znajdz w nim ekran konca poziomu i go włącz
+            GameObject.Find("Canvas").transform.Find("LevelCompliteScreen").gameObject.SetActive(true);
+        }
+        //sprawdzamy czy poziom się zakończył i czy musimy wyświetlić ekran końcowy
+        if (levelManagerObject.GetComponent<LevelManager>().levelFailed)
+        {
+            //znajdz canvas (interfejs), znajdz w nim ekran konca poziomu i go włącz
+            GameObject.Find("Canvas").transform.Find("GameOverScreen").gameObject.SetActive(true);
+        }
+
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -94,7 +107,26 @@ public class PlayerControler : MonoBehaviour
             //popchnij asteroide
             asteroid.GetComponent<Rigidbody>().AddForce(shieldForce * 5, ForceMode.Impulse);
             shieldCapacity -= 0.25f;
+            if (shieldCapacity <= 0)
+            {
+                //poinformuj level manager, że gra się skończyła bo nie mamy osłon
+                levelManagerObject.GetComponent<LevelManager>().levelFailed = true;
+            }
+        }
+        
+    }
+    private void OnTriggerEnter(Collider other)
+    {
+        //jeżeli dotkniemy znacnzika końca poziomu to ustaw w levelmanager flagę,
+        //że poziom jest ukończony
+        if (other.transform.CompareTag("LevelExit"))
+        {
+            //wywołaj dla LevelManager metodę zakończenia poziomu
+            levelManagerObject.GetComponent<LevelManager>().levelComplete = true;
         }
     }
 }
+
+
+
 
