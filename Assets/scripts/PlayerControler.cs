@@ -110,7 +110,7 @@ public class PlayerControler : MonoBehaviour
             if (shieldCapacity <= 0)
             {
                 //poinformuj level manager, że gra się skończyła bo nie mamy osłon
-                levelManagerObject.GetComponent<LevelManager>().levelFailed = true;
+                levelManagerObject.GetComponent<LevelManager>().OnFailure();
             }
         }
         
@@ -122,7 +122,7 @@ public class PlayerControler : MonoBehaviour
         if (other.transform.CompareTag("LevelExit"))
         {
             //wywołaj dla LevelManager metodę zakończenia poziomu
-            levelManagerObject.GetComponent<LevelManager>().levelComplete = true;
+            levelManagerObject.GetComponent<LevelManager>().OnSuccess();
         }
     }
 }
