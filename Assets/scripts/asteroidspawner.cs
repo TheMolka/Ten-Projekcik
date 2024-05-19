@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿#nullable enable
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -26,15 +27,8 @@ public class AsteroidSpawner : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //dolicz czas od ostatniej klatki
-        timeSinceSpawn += Time.deltaTime;
-        //je¿eli czas przekroczy³ sekundê to spawnuj i zresetuj
-        if (timeSinceSpawn > 0.1)
-        {
-            
-            GameObject asteroid = SpawnAsteroid(staticasteroid);
-            timeSinceSpawn = 0;
-        }
+        SpawnAsteroid(staticasteroid);
+        timeSinceSpawn = 0;
 
         AsteroidCountControll();
     }
@@ -56,7 +50,7 @@ public class AsteroidSpawner : MonoBehaviour
 
         //sprawdz czy miejsce jest wolne
         //! oznacza "nie" czyli nie ma nic w promieniu 5 jednostek od miejsca randomPosition
-        if (!Physics.CheckSphere(randomPosition, 5))
+        if (!Physics.CheckSphere(randomPosition, 7))
         {
             //stworz zmienn¹ asteroid, zespawnuj nowy asteroid korzystaj¹c z prefaba
             // w losowym miejscu, z rotacj¹ domyœln¹ (Quaternion.identity)
