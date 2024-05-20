@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public GameObject exitPrefab;
     public bool levelComplete = false;
     public bool levelFailed = false;
+   
     // Start is called before the first frame update
     // Start is called before the first frame update
     void Start()
@@ -45,6 +46,7 @@ public class LevelManager : MonoBehaviour
         //zatrzymaj ambientowa muzyczke
         Camera.main.transform.GetComponent<AudioSource>().Stop();
         //odegraj dŸwiêk koñca poziomu
+        
         //Camera.main.transform.Find("LevelCompleteSound").GetComponent<AudioSource>().Play();
         //przenisione do elementu interfejsu
     }
@@ -58,7 +60,8 @@ public class LevelManager : MonoBehaviour
         //zatrzymaj ambientowa muzyczke
         Camera.main.transform.GetComponent<AudioSource>().Stop();
         //odgrywmay dzwiek przegranej
-        //Camera.main.transform.Find("GameOverSound").GetComponent<AudioSource>().Play();
+        
+        //Camera.main.transform.Find("GameOverScreen").GetComponent<AudioSource>().Play();
         //przenisione do elementu interfejsu
     }
 }
