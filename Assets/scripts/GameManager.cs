@@ -21,6 +21,7 @@ public class GameManager : MonoBehaviour
     {
         SceneManager.LoadScene("Scene1");
     }
+    
     //ta funkcja powoduje dzialajacy przycisk po porazce
     public void RestartGame()
     {
@@ -45,9 +46,9 @@ public class GameManager : MonoBehaviour
         int levelNo = int.Parse(scene.name.Replace("Scene", ""));
         //uruchomienie nastepnego poziomu czyli dodanie 1 do wczesniej odczytanej liczby
 
-        if (levelNo == 5)
+        if (levelNo == 1)
         {
-            SceneManager.LoadScene("End");
+            SceneManager.LoadScene("ending");
         }
         else
         {

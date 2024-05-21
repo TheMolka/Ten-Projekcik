@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class LevelManager : MonoBehaviour
 {
@@ -39,14 +40,15 @@ public class LevelManager : MonoBehaviour
     //funkcja jest utuchamiana kiedy dany poziom (level) jest zakoñczony sukcesem
     public void OnSuccess()
     {
+        SceneManager.LoadScene("ending");
         //zatrzymaj fizykê gry
-        Time.timeScale = 0f;
+        // to do odpisania Time.timeScale = 0f;
         //ustaw flagê - poziom zakoñczony
-        levelComplete = true;
+        // to do odpisanialevelComplete = true;
         //zatrzymaj ambientowa muzyczke
-        Camera.main.transform.GetComponent<AudioSource>().Stop();
+        // to do odpisania Camera.main.transform.GetComponent<AudioSource>().Stop();
         //odegraj dŸwiêk koñca poziomu
-        
+
         //Camera.main.transform.Find("LevelCompleteSound").GetComponent<AudioSource>().Play();
         //przenisione do elementu interfejsu
     }
